@@ -14,19 +14,19 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
-  getAllImages(){
+  getAllImages(): Observable<Image[]> {
     return this.http.get<Image[]>(`${this.apiURL}/images`);
   }
 
-  getOneImage(id: number){
+  getOneImage(id: number): Observable<Image> {
     return this.http.get<Image>(`${this.apiURL}/images/${id}`);
   }
 
-  saveImage(data: ImageFromData):Observable<Image>{
+  saveImage(data: ImageFromData): Observable<Image> {
     return this.http.post<Image>(`${this.apiURL}/images`, data);
   }
 
-  deleteImage(id: number):Observable<any>{
+  deleteImage(id: number): Observable<any> {
     return this.http.delete(`${this.apiURL}/images/${id}`);
   }
 }
