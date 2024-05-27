@@ -1,2 +1,16 @@
 <!-- Form -->
 <app-image-form (savedImage)="onSavedImage($event)"></app-image-form>
+
+<div class="container py-5">
+    <p>{{images.length}} imágenes en total</p>
+
+    <div *ngIf="images.length > 0; else emptyGallery">
+        <!-- Agregar componente app-image -->
+    </div>
+    <ng-template #emptyGallery>
+        <div class="empty-message d-flex align-items-center justify-content-center flex-column">
+            <h2 class="lead text-secondary">Galería vacía</h2>
+            <p class="text-secondary">Agrega una imagen para comenzar</p>
+        </div>
+    </ng-template>
+</div>
