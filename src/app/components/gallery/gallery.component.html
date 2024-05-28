@@ -4,8 +4,10 @@
 <div class="container py-5">
     <p>{{images.length}} imágenes en total</p>
 
-    <div *ngIf="images.length > 0; else emptyGallery">
-        <!-- Agregar componente app-image -->
+    <div class="row" *ngIf="images.length > 0; else emptyGallery">
+        <div class="col-12 col-md-6 col-lg-3 mb-3" *ngFor="let image of images">
+            <app-image [image]="image"></app-image>
+        </div>
     </div>
     <ng-template #emptyGallery>
         <div class="empty-message d-flex align-items-center justify-content-center flex-column">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Image } from 'src/app/models/image.model';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-gallery',
@@ -8,6 +9,14 @@ import { Image } from 'src/app/models/image.model';
 })
 export class GalleryComponent {
   images: Image[]=[];
+
+  constructor(private imageService: ImageService) { }
+
+  ngOnInit(): void {
+    this.imageService.getAllImages().subscribe(
+      response => this.images = response
+    );
+  }
 
   onSavedImage(image: Image): void {
     this.images.unshift(image);
